@@ -2,11 +2,9 @@ import React from 'react';
 import {
     Drawer,
     Box,
-    IconButton,
     Toolbar,
-    Button
+    Button,
 } from "@mui/material";
-import { Menu } from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import SearchIcon from '@mui/icons-material/Search';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -28,39 +26,33 @@ const {
             variant="permanent"
             anchor="left"
         >
-            <Toolbar disableGutters>
-                <Box sx={{ mr: 1 }}>
-                    <IconButton size="large" color="inherit">
-                        <Menu />
-                        Menu
-                    </IconButton>
-                </Box>
-            </Toolbar>
+            <Toolbar disableGutters />
             <Box sx={{ p: 2 }}>
-                <Button color="inherit" startIcon={<SearchIcon />} >
-                    Search
+                <Button
+                    color="inherit"
+                    startIcon={<SearchIcon />} >
                 </Button>
             </Box>
             <Box sx={{ p: 2 }}>
-                <Button color="inherit" startIcon={<BookmarkBorderIcon />} >
-                    Favorite
+                <Button
+                    color="inherit"
+                    startIcon={<BookmarkBorderIcon />} >
                 </Button>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ p: 3 }}>
+            <Box sx={{ p: 2 }}>
                 {!currentUser ? (
                     <Button
                         color="inherit"
                         startIcon={<LockIcon />}
                         onClick={()=>dispatch({type:'UPDATE_USER', payload:user})}
                     >
-                    Login
                 </Button>
-                ) : (
-                    <UserIcons />
-                )}
-            </Box>
-        </Drawer>
+                    ) : (
+                        <UserIcons />
+                    )}
+                </Box>
+            </Drawer>
     );
 };
 
