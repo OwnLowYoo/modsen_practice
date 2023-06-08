@@ -1,11 +1,28 @@
 import React from 'react';
-import { Drawer, Box, IconButton, Toolbar, Button } from "@mui/material";
+import {
+    Drawer,
+    Box,
+    IconButton,
+    Toolbar,
+    Button
+} from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import LockIcon from '@mui/icons-material/Lock';
 import SearchIcon from '@mui/icons-material/Search';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import ava from '../ava.jpg'
+import UserIcons from "./user/UserIcons";
+import {useValue} from "../context/ContextProvider";
+
+const user = {name:'test', ava}
 
 const NavBar = () => {
+
+const {
+    state:{currentUser},
+    dispatch
+} = useValue();
+
     return (
         <Drawer
             variant="permanent"
@@ -31,9 +48,17 @@ const NavBar = () => {
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ p: 3 }}>
-                <Button color="inherit" startIcon={<LockIcon />} >
+                {!currentUser ? (
+                    <Button
+                        color="inherit"
+                        startIcon={<LockIcon />}
+                        onClick={()=>dispatch({type:'UPDATE_USER', payload:user})}
+                    >
                     Login
                 </Button>
+                ) : (
+                    <UserIcons />
+                )}
             </Box>
         </Drawer>
     );
