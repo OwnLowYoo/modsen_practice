@@ -1,7 +1,7 @@
 import React from 'react';
 import {ListItemIcon, Menu, MenuItem} from '@mui/material'
 import {Logout, Settings} from "@mui/icons-material";
-import {useValue} from "../context/ContextProvider";
+import {useValue} from "../../context/ContextProvider";
 
 const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
     const{dispatch} = useValue()

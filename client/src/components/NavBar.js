@@ -45,7 +45,7 @@ const {
                     <Button
                         color="inherit"
                         startIcon={<LockIcon />}
-                        onClick={()=>dispatch({type:'UPDATE_USER', payload:user})}
+                        onClick={()=>dispatch({type:'OPEN_LOGIN'})}
                     >
                 </Button>
                     ) : (
