@@ -5,8 +5,9 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 const PasswordField = ({
        passwordRef,
        id='password',
-       label='Пароль'
+       label='Password'
 }) => {
+
     const  [showPassword, setShowPassword] = useState(false)
 
     const handleClick = () => {

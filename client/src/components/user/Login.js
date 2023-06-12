@@ -9,9 +9,9 @@ import {
     IconButton,
     TextField
 } from "@mui/material";
-import {useValue} from "../../../context/ContextProvider";
+import {useValue} from "../../context/ContextProvider";
 import {Close, Send} from "@mui/icons-material";
-import PasswordField from "../PasswordField";
+import PasswordField from "./PasswordField";
 
 const Login = () => {
     const { state:{openLogin}, dispatch} = useValue()
@@ -28,6 +28,13 @@ const Login = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const password = passwordRef.current.value
+        const confirmPassword = confirmPasswordRef.current.value
+        if(password !==confirmPassword) {
+            dispatch({type: 'UPDATE_ALERT', payload:{open:true, severity:'error', message:'Пароли не совпадают'}})
+        }
+
     }
 
     useEffect (() =>{
