@@ -12,6 +12,7 @@ import {
 import {useValue} from "../../context/ContextProvider";
 import {Close, Send} from "@mui/icons-material";
 import PasswordField from "./PasswordField";
+import {register} from "../../actions/user";
 
 const Login = () => {
     const { state:{openLogin}, dispatch} = useValue()
@@ -27,15 +28,23 @@ const Login = () => {
     }
     
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const name = nameRef.current.value;
+        const confirmPassword = confirmPasswordRef.current.value;
+        if(password !==confirmPassword)
+            return dispatch({
+                type: 'UPDATE_ALERT',
+                payload:{
+                    open:true,
+                    severity:'error',
+                    message:'Пароли не совпадают',
+                },
+            });
+        register({name, email, password}, dispatch)
+   };
 
-        const password = passwordRef.current.value
-        const confirmPassword = confirmPasswordRef.current.value
-        if(password !==confirmPassword) {
-            dispatch({type: 'UPDATE_ALERT', payload:{open:true, severity:'error', message:'Пароли не совпадают'}})
-        }
-
-    }
 
     useEffect (() =>{
         isRegister ? setTitle('Регистрация') : setTitle('Вход');

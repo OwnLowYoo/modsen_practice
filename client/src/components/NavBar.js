@@ -8,11 +8,9 @@ import {
 import LockIcon from '@mui/icons-material/Lock';
 import SearchIcon from '@mui/icons-material/Search';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import ava from '../ava.jpg'
 import UserIcons from "./user/UserIcons";
 import {useValue} from "../context/ContextProvider";
 
-const user = {name:'test', ava}
 
 const NavBar = () => {
 
