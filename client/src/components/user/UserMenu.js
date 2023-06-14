@@ -12,7 +12,7 @@ const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
 };
 
     const testAuthorization = async() => {
-        const url = process.env.REACT_APP_SERVER_URL
+        const url = process.env.REACT_APP_SERVER_URL + '/'
         try {
             const response = await fetch(url, {
                 method: 'POST',

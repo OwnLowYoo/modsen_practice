@@ -13,6 +13,7 @@ import {useValue} from "../../context/ContextProvider";
 import {Close, Send} from "@mui/icons-material";
 import PasswordField from "./PasswordField";
 import {register} from "../../actions/user";
+import GoogleOneTapLogin from "./GoogleOneTapLogin";
 
 const Login = () => {
     const { state:{openLogin}, dispatch} = useValue()
@@ -26,14 +27,14 @@ const Login = () => {
     const handleClose = () => {
         dispatch({type:'CLOSE_LOGIN'})
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const name = nameRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
-        if(password !==confirmPassword)
+        if (password !== confirmPassword)
             return dispatch({
                 type: 'UPDATE_ALERT',
                 payload:{
@@ -72,22 +73,22 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <DialogContent dividers>
                     <DialogContentText>
-                        Пожалуйста заполните информацию ниже:
+                        Пожалуйста заполните поля ниже:
                     </DialogContentText>
-                    {isRegister &&
-                    <TextField
-                        autoFocus
-                        margin='normal'
-                        variant='standard'
-                        id='name'
-                        label='Имя'
-                        type='text'
-                        fullWidth
-                        inputRef={nameRef}
-                        inputProps={{minLength:2}}
-                        required
+                    {isRegister && (
+                        <TextField
+                            autoFocus
+                            margin="normal"
+                            variant="standard"
+                            id="name"
+                            label="Name"
+                            type="text"
+                            fullWidth
+                            inputRef={nameRef}
+                            inputProps={{ minLength: 2 }}
+                            required
                         />
-                        }
+                    )}
                     <TextField
                         autoFocus={!isRegister}
                         margin='normal'
@@ -107,10 +108,10 @@ const Login = () => {
                         label='Подтвердите Пароль' />
                     }
                 </DialogContent>
-                <DialogActions>
+                <DialogActions sx={{ px: '19px' }}>
                     <Button
-                        type='submit'
-                        variant='contained'
+                        type="submit"
+                        variant="contained"
                         endIcon={<Send />}>
                         Отправить
                     </Button>
@@ -123,7 +124,9 @@ const Login = () => {
                 <Button onClick={() => setIsRegister(!isRegister)}>
                     {isRegister ? 'Войти' : 'Зарегистрироваться'}
                 </Button>
-
+            </DialogActions>
+            <DialogActions sx={{ justifyContent: 'center', py: '24px' }}>
+                <GoogleOneTapLogin />
             </DialogActions>
         </Dialog>
     );

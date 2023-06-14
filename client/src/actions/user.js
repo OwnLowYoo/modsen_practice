@@ -3,7 +3,6 @@ import fetchData from "./utils/fetchData";
 const url = process.env.REACT_APP_SERVER_URL + '/user'
 
 export const register = async(user, dispatch)=>{
-    dispatch({type:'START_LOADING'})
 const result = await fetchData(
     { url: url + '/register', body:user},
     dispatch
@@ -20,5 +19,4 @@ const result = await fetchData(
             },
         });
     }
-    dispatch({type:'END_LOADING'})
 }
