@@ -10,7 +10,7 @@ const useCheckToken = () => {
     useEffect(() => {
         if (currentUser){
             const decodedToken = jwtDecode(currentUser.token);
-            if (decodedToken.exp*100<new Date().getTime())
+            if (decodedToken.exp*1000<new Date().getTime())
                 dispatch({ type:'UPDATE_USER', payload: null})
         }
     }, [])
