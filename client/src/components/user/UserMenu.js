@@ -12,13 +12,13 @@ const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
 };
 
     const testAuthorization = async() => {
-        const url = process.env.REACT_APP_SERVER_URL + '/'
+        const url = process.env.REACT_APP_SERVER_URL
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    authorization: `Bearer ${currentUser.token} `
+                    authorization: `Bearer ${currentUser.token}t`
                 }
             })
             const data = await response.json()
@@ -45,14 +45,14 @@ const UserMenu = ({anchorUserMenu, setAnchorUserMenu}) => {
                 <ListItemIcon>
                     <Settings fontSize="small" />
                 </ListItemIcon>
-                Profile
+                Профиль
             </MenuItem>
             <MenuItem onClick={()=>dispatch({type:'UPDATE_USER', payload:null})}
             >
                 <ListItemIcon>
                     <Logout fontSize="small" />
                 </ListItemIcon>
-                Logout
+                Выйти
             </MenuItem>
         </Menu>
     );

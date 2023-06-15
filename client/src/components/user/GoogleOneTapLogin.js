@@ -11,14 +11,14 @@ const GoogleOneTapLogin = () => {
     const handleResponse = (response) => {
         const token = response.credential;
         const decodedToken = jwtDecode(token);
-        const { sub: id, email, name, picture: photoURL } = decodedToken;
+        const { sub: id, email, name, picture: ava } = decodedToken;
         dispatch({
             type: 'UPDATE_USER',
             payload: {
                 id,
                 email,
                 name,
-                photoURL,
+                ava,
                 token,
                 google: true,
                 role: 'basic',
@@ -35,7 +35,7 @@ const GoogleOneTapLogin = () => {
             });
             window.google.accounts.id.prompt((notification) => {
                 if (notification.isNotDisplayed()) {
-                    throw new Error('Try to clear the cookies or try again later!');
+                    throw new Error('Попробуйте позже!');
                 }
                 if (
                     notification.isSkippedMoment() ||
@@ -59,7 +59,7 @@ const GoogleOneTapLogin = () => {
             disabled={disabled}
             onClick={handleGoogleLogin}
         >
-            Login with Google
+            Войти с помощью Google
         </Button>
     );
 };
