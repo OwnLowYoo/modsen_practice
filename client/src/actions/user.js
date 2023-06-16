@@ -19,4 +19,16 @@ const result = await fetchData(
             },
         });
     }
+};
+
+export const login = async(user, dispatch)=>{
+    const result = await fetchData(
+        { url: url + '/login', body:user},
+        dispatch
+    );
+    if (result) {
+        dispatch ({ type: 'UPDATE_USER', payload: result});
+        dispatch ({ type: 'CLOSE_LOGIN'});
+
+    }
 }

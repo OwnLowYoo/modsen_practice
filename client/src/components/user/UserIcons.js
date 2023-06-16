@@ -12,7 +12,7 @@ const UserIcons = () => {
 
     return (
         <Box>
-            <Tooltip title='Open User Settings'>
+            <Tooltip title='Пользовательские настройки'>
                 <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
                     <Avatar src={currentUser?.ava} alt={currentUser?.name}>
                         {currentUser?.name?.charAt(0).toUpperCase()}

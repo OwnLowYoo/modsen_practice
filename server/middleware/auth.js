@@ -16,13 +16,11 @@ const auth = async (req, res, next) => {
             req.user = {
                 id: payload.sub,
                 name: payload.name,
-                ava: payload.picture,
-                role: 'basic',
             };
         } else {
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-            const { id, name, ava, role } = decodedToken;
-            req.user = { id, name, ava, role };
+            const { id, name} = decodedToken;
+            req.user = { id, name};
         }
         next();
     } catch (error) {

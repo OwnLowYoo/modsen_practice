@@ -11,17 +11,15 @@ const GoogleOneTapLogin = () => {
     const handleResponse = (response) => {
         const token = response.credential;
         const decodedToken = jwtDecode(token);
-        const { sub: id, email, name, picture: ava } = decodedToken;
+        const { sub: id, email, name} = decodedToken;
         dispatch({
             type: 'UPDATE_USER',
             payload: {
                 id,
                 email,
                 name,
-                ava,
                 token,
                 google: true,
-                role: 'basic',
             },
         });
         dispatch({ type: 'CLOSE_LOGIN' });
