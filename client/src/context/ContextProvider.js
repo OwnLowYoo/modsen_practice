@@ -5,6 +5,7 @@ const initialState = {
     currentUser:null,
     openLogin:false,
     alert:{open: false, severity:'info', message:''},
+    location:{lng:0, lat:0},
 };
 
 const Context = createContext(initialState)

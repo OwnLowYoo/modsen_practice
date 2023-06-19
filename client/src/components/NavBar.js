@@ -29,22 +29,25 @@ const {
                 <Button
                     color="inherit"
                     startIcon={<SearchIcon />} >
+                    Search
                 </Button>
             </Box>
             <Box sx={{ p: 2 }}>
                 <Button
                     color="inherit"
                     startIcon={<BookmarkBorderIcon />} >
+                    Favorite
                 </Button>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ p: 2 }}>
+            <Box sx={{ p: 4 }}>
                 {!currentUser ? (
                     <Button
                         color="inherit"
                         startIcon={<LockIcon />}
                         onClick={()=>dispatch({type:'OPEN_LOGIN'})}
                     >
+                        Login
                 </Button>
                     ) : (
                         <UserIcons />
