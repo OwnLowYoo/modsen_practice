@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapGL, {Marker} from 'react-map-gl'
+import ReactMapGL, {GeolocateControl, Marker, NavigationControl} from 'react-map-gl'
 import {Box} from "@mui/material";
 import {useValue} from "../../context/ContextProvider";
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -29,7 +29,17 @@ const Map = () => {
                 draggable
                 onDragEnd={(e)=> dispatch({type:'UPDATE_LOCATION', payload:{lng:e.lngLat.lng, lat:e.lngLat.lat}})}
                 />
-            </ReactMapGL>
+                <NavigationControl position='bottom-right' />
+                <GeolocateControl
+                    position='top-left'
+                    trackUserLocation
+                    onGeolocate={(e) => dispatch({type:'UPDATE_LOCATION',
+                            payload:{lng:e.coords.longitude, lat:e.coords.latitude},
+                        })
+                    }
+                    />
+
+                        </ReactMapGL>
         </Box>
     )
 };
