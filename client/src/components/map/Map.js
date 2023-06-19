@@ -31,7 +31,7 @@ const Map = () => {
                 />
                 <NavigationControl position='bottom-right' />
                 <GeolocateControl
-                    position='top-left'
+                    position='top-right'
                     trackUserLocation
                     onGeolocate={(e) => dispatch({type:'UPDATE_LOCATION',
                             payload:{lng:e.coords.longitude, lat:e.coords.latitude},
