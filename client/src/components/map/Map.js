@@ -3,6 +3,7 @@ import ReactMapGL, {GeolocateControl, Marker, NavigationControl} from 'react-map
 import {Box} from "@mui/material";
 import {useValue} from "../../context/ContextProvider";
 import 'mapbox-gl/dist/mapbox-gl.css'
+import Geocoder from "./Geocoder";
 
 const Map = () => {
     const {state:{location:{lng, lat}}, dispatch} = useValue()
@@ -54,8 +55,8 @@ const Map = () => {
                         })
                     }
                     />
-
-                        </ReactMapGL>
+                    <Geocoder />
+            </ReactMapGL>
         </Box>
     )
 };
